@@ -20,16 +20,32 @@ import { NotificationsModule } from './notifications/notifications.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USER'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_NAME'),
-        autoLoadEntities: true,
-        synchronize: true,
-      }),
+      useFactory: (configService: ConfigService) => {
+        const isProduction = process.env.NODE_ENV === 'production';
+
+        if (isProduction) {
+          return {
+            type: 'postgres',
+            url: configService.get<string>('DATABASE_URL'),
+            ssl: {
+              rejectUnauthorized: false,
+            },
+            autoLoadEntities: true,
+            synchronize: true,
+          };
+        } else {
+          return {
+            type: 'postgres',
+            host: configService.get<string>('DB_HOST'),
+            port: configService.get<number>('DB_PORT'),
+            username: configService.get<string>('DB_USER'),
+            password: configService.get<string>('DB_PASSWORD'),
+            database: configService.get<string>('DB_NAME'),
+            autoLoadEntities: true,
+            synchronize: true,
+          };
+        }
+      },
     }),
     DomainsModule,
     UsersModule,
