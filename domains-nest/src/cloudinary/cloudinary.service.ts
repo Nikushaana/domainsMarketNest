@@ -6,16 +6,16 @@ import { Readable } from 'stream';
 @Injectable()
 export class CloudinaryService {
   constructor(private configService: ConfigService) {
-    // cloudinary.config({
-    //   cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
-    //   api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
-    //   api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
-    // });
     cloudinary.config({
-      cloud_name: 'dwofcbyld',
-      api_key: '771884159596425',
-      api_secret: 'CGd7xsi2rW969qey5V7rRDHKniY',
+      cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
+      api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
+      api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
     });
+    // cloudinary.config({
+    //   cloud_name: 'dwofcbyld',
+    //   api_key: '771884159596425',
+    //   api_secret: 'CGd7xsi2rW969qey5V7rRDHKniY',
+    // });
   }
 
   private async uploadFromBuffer(
