@@ -9,7 +9,9 @@ export class CloudinaryService {
     cloudinary.config({
       cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
       api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
-      api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
+      api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET')
+        ? 'loaded'
+        : 'missing',
     });
   }
 
