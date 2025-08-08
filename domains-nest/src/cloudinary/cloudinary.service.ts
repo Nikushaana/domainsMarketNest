@@ -1,23 +1,20 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { v2 as cloudinary } from 'cloudinary';
 import { ConfigService } from '@nestjs/config';
 import { Readable } from 'stream';
 
 @Injectable()
-export class CloudinaryService implements OnModuleInit {
-  constructor(private configService: ConfigService) {}
-
-  onModuleInit() {
-    const cloudName = this.configService.get<string>('CLOUDINARY_CLOUD_NAME');
-    const apiKey = this.configService.get<string>('CLOUDINARY_API_KEY');
-    const apiSecret = this.configService.get<string>('CLOUDINARY_API_SECRET');
-
-    console.log({ cloudName, apiKey, apiSecret }); // ✅ Debug log
-
+export class CloudinaryService {
+  constructor(private configService: ConfigService) {
+    // cloudinary.config({
+    //   cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
+    //   api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
+    //   api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
+    // });
     cloudinary.config({
-      cloud_name: cloudName,
-      api_key: apiKey,
-      api_secret: apiSecret,
+      cloud_name: 'dwofcbyld',
+      api_key: '771884159596425',
+      api_secret: 'CGd7xsi2rW969qey5V7rRDHKniY',
     });
   }
 
