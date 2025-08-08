@@ -8,7 +8,7 @@ import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
-    origin: ['https://domains-market.vercel.app', 'http://localhost:3000'],
+    origin: ['https://domains-market-nest.vercel.app', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
   },
 })
