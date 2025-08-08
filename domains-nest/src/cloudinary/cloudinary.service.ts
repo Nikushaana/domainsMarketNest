@@ -6,20 +6,15 @@ import { Readable } from 'stream';
 @Injectable()
 export class CloudinaryService {
   constructor(private configService: ConfigService) {
-    console.log('[CloudinaryService] ENV values before config:', {
-      CLOUDINARY_CLOUD_NAME: this.configService.get<string>(
-        'CLOUDINARY_CLOUD_NAME',
-      ),
-      CLOUDINARY_API_KEY: this.configService.get<string>('CLOUDINARY_API_KEY'),
-      CLOUDINARY_API_SECRET: this.configService.get<string>(
-        'CLOUDINARY_API_SECRET',
-      ),
-    });
-
+    // cloudinary.config({
+    //   cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
+    //   api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
+    //   api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
+    // });
     cloudinary.config({
-      cloud_name: this.configService.get<string>('CLOUDINARY_CLOUD_NAME'),
-      api_key: this.configService.get<string>('CLOUDINARY_API_KEY'),
-      api_secret: this.configService.get<string>('CLOUDINARY_API_SECRET'),
+      cloud_name: 'dwofcbyld',
+      api_key: '771884159596425',
+      api_secret: 'CGd7xsi2rW969qey5V7rRDHKniY',
     });
   }
 
