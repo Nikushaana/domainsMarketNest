@@ -15,7 +15,7 @@ export default function page() {
   const { HandleAdminToken } = useContext(adminProviderContext)!;
 
   const [adminLoginValues, setAdminLoginValues] = useState({
-    email: "",
+    email: "",  
     password: "",
     repeatPassword: "",
   });
@@ -91,7 +91,7 @@ export default function page() {
   };
   return (
     <div className="flex flex-col gap-y-[20px] max-sm:px-[16px] items-center justify-center h-[calc(100vh-81px)]">
-      <h1 className="text-[25px]">Login as Admin</h1>
+      <h1 className="text-[25px]">Login as Admin!</h1>
       <div className="w-[450px] max-sm:w-full bg-myPurple shadow-md shadow-myPurple rounded-[20px] px-[40px] max-sm:px-[15px] py-[30px] max-sm:py-[15px] flex flex-col gap-y-[15px]">
         <InputCust
           title="Email"
